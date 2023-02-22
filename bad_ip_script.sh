@@ -1,6 +1,8 @@
 #!/bin/bash
 #add failed login ip addresses to hosts.deny
 #add as a cron job to run periodically
+#Copyright (c) 2023, Mark Parsons
+#BSD Licence
 
 #create bad_ip.txt with header to hold ip addresses
 echo '#bad_ip_script' > bad_ip.txt
