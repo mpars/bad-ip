@@ -23,5 +23,8 @@ sed -i '/#bad_ip_script/,$ d' /etc/hosts.deny
 
 #add new bad_ip's to hosts.deny
 cat unique_bad_ip.txt >> /etc/hosts.deny
-cat unique_bad_ip.txt | grep -c 'sshd'
-echo 'bad ip addresses'
+#log ip addresses in hosts.deny to /var/log/bad_ip
+dt=$(date +%b\ %d\ %H:%M:%S)
+hn=$(hostname)
+count=$(cat unique_bad_ip.txt | grep -c 'sshd')
+echo $dt $hn "bad_ip:" $count "bad IP addresses in hosts.deny" >> /var/log/bad_ip.log
